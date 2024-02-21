@@ -3,7 +3,7 @@ const Random = Mock.Random
 
 const getQuestionList = (option = {}) => {
 	const {length = 10 , isStar = false, isDeleted = false} = option
-
+	console.log(length, 'aaaa')
 	const questionList = []
 
 	for(let i = 0; i < length; i ++) {

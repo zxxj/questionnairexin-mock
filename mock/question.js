@@ -42,16 +42,18 @@ module.exports = [
 		url: "/api/question",
 		method: 'get',
 		response(ctx) {
-			console.log('ctx', ctx)
+			console.log('ctx', ctx.query)
 
 			const isStar = ctx.url.indexOf('/api/question?keyword=&isStar=true') >= 0
 			const isDeleted = ctx.url.indexOf('/api/question?keyword=&isDeleted=true') >= 0
+			const page = Number(ctx.query.page)
+			const length = Number(ctx.query.pageSize)
 			console.log(isDeleted)
 			return {
 				code: 0,
 				msg: 'ok',
 				data: {
-					list: getQuestionList({isStar, isDeleted}), // 问卷列表
+					list: getQuestionList({length,isStar, isDeleted}), // 问卷列表
 					total: 100, // 问卷总数
 				}
 			}
